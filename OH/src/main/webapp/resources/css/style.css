@@ -1,0 +1,15 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'BigTextFont';
+    src: url('../fonts/b.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SmallTextFont';
+    src: url('../fonts/a.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NumberFont';
+    src: url('../fonts/c.ttf') format('truetype');
+}

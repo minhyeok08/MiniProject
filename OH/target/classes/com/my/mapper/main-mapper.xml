@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.mapper.MainMapper">
+	<select id="ListData" resultType="ProductVO">
+		SELECT pcno, name, detail, price, discount, method, img FROM PRODUCT_LIST
+		WHERE pcno BETWEEN 1 AND 8
+	</select>
+	
+	<insert id="CartInsertData" parameterType="int">
+	    INSERT INTO cart (pcno, count) VALUES (#{pcno}, 1)
+	</insert>
+	
+	<delete id="CartDeleteData" parameterType="int">
+	    DELETE FROM cart
+	    WHERE pcno = #{pcno}
+	</delete>
+	
+	<update id="CartUpdateData" parameterType="hashmap">
+	    UPDATE cart
+		SET count = #{count}
+		WHERE pcno = #{pcno}
+	</update>
+	
+	<select id="CartData" resultType="ProductVO">
+		SELECT P.pcno as pcno, P.name as name, P.detail as detail, P.price as price, 
+		P.discount as discount, P.method as method , P.img as img, C.count as count 
+		FROM CART C
+		JOIN PRODUCT_LIST P ON C.pcno = P.pcno
+	</select>
+</mapper>

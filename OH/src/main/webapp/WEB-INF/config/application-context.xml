@@ -15,10 +15,9 @@
 	<mvc:annotation-driven/>
 	
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/"
-		p:suffix=".jsp"
-		p:order="1"
-	/>
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+      p:prefix="/WEB-INF/main/"
+      p:suffix=".jsp"
+      p:order="1"/>
 
 </beans>
