@@ -13,11 +13,11 @@
 <style>
 
 	body {
-    font-family: 'BigTextFont', sans-serif;
+    	font-family: 'BigTextFont', sans-serif;
 	}
     
     .big-text {
-    font-family: 'BigTextFont', sans-serif;
+    	font-family: 'BigTextFont', sans-serif;
 	}
 	
 	.small-text {
@@ -33,13 +33,13 @@
     height: auto;
     border: 1px solid #000;
     
-    padding: 10px; /* 이미지 내부의 여백 */
-    background: #ffffff; /* 여백 영역의 배경색 */
-    border: 0.2px solid #ddd; /* 테두리 선 굵기를 0.5px로 설정 */
+    padding: 10px; 
+    background: #ffffff; 
+    border: 0.2px solid #ddd; 
   }
   .image-cell{
-    text-align: center; /* 가로 중앙 정렬 */
-    vertical-align: middle; /* 세로 중앙 정렬 */
+    text-align: center; 
+    vertical-align: middle; 
 	}
 
 </style>
@@ -142,6 +142,7 @@
 			    totalPayment: function() {
 			        // 총 금액 계산 (배송비 미포함)
 			        var tpay = this.clist.reduce((total, vo) => total + parseInt(this.totalPrice(vo).replace(/,/g, '')), 0);
+			        // 상품 가격 * 개수 총합 가격 누산
 			        return this.addCommas(tpay); // 콤마 추가
 			    },
 
@@ -171,17 +172,16 @@
 		        },
 		        
 		        saveCart: function() {
-		            console.log('장바구니 저장');
-		            // 모든 아이템 저장 작업을 담을 배열
-		            let saveTasks = [];
+		            console.log('장바구니 저장');		            
+		            let saveTasks = []; // 모든 아이템 저장 작업을 담을 배열
 
 		            this.clist.forEach(item => {
-		                // axios 요청은 Promise를 반환하므로, 이를 배열에 담습니다.
+		                // axios 요청 => promise 반환 => 배열에 저장
 		                let task = axios.get("../main/update_vue.do", { params: { pcno: item.pcno, count: item.count } })
 		                saveTasks.push(task);
 		            });
 
-		            // Promise.all을 사용하여 모든 저장 작업이 완료되면 알림 메시지를 보냅니다.
+		            // Promise.all을 사용하여 모든 저장 작업이 완료되면 알림 메시지 전송
 		            Promise.all(saveTasks)
 		                .then(responses => {
 		                    responses.forEach(response => console.log(response.data)); // 각 응답 출력

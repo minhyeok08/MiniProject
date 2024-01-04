@@ -1,9 +1,11 @@
 package com.my.vo;
 
 public class ProductVO {
-	private int pcno,discount,price,count,dprice;
+	private int pcno,discount,price,count,dprice; 
+	// pcno 상품 고유번호, discount 할인율, price 상품가격, count 상품개수, dprice 상품할인가
 	
 	private String name,detail,method,img,strPrice,strDprice;
+	// name 상품명, detail 상품상세설명, method 보관방법, img 상품이미지파일명, string형 가격(decimal.format함수 활용위해), string형 상품할인가
 	public int getPcno() {
 		return pcno;
 	}

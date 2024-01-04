@@ -53,7 +53,7 @@
         }
         
 	    .modal-content {
-            min-height: 20vh;  /* 원하는 높이로 조절하세요. vh는 viewport height의 약자로, 브라우저 창 높이의 백분율을 의미합니다. */
+            min-height: 20vh;  
         }
         
     </style>
@@ -157,7 +157,7 @@
 		            })
 		            .then(response => {
 				        alert('장바구니 담기 완료');
-				        window.location.href = '../main/main.do'; // 리스트 화면 URL을 여기에 작성하였습니다.
+				        window.location.href = '../main/main.do'; // 메인 화면으로 이동
 				    })
 		            .catch(error => {
 		            	if (error.response && error.response.data) {

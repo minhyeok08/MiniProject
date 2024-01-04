@@ -12,7 +12,6 @@ public class MainDAO {
 	
 	public List<ProductVO> ListData()
 	{
-		
 		return mapper.ListData();
 	}
 	
